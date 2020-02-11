@@ -1,28 +1,48 @@
 #### write commands for following mongodb opertaions
 
-1. create a database named `sports`
-// Answer here ..
+- create a database named `sports`.
+  use sports
 
-2. list all databases present in local mongod server.
-// Answer here..
+- list all databases present in local mongod server.
+  show dbs
 
-3. create 3 collections named `cricket`, `football`, `TT` in sports database.
+- create 3 collections named `cricket`, `football`, `TT` in sports databse.
+  db.createCollection('cricket')
+  db.createCollection('football')
+  db.createCollection('TT')
 
-4. add 3 players in each of above collections which should have fields like `name`, `age`, `email`, state and auction_price.
+- add multiple players in those collections which should have fields like `name`, `age` and `email` and `cost`.
+  db.cricket.insert( {
+  ... name: "bim",
+  ... age : 24,
+  ... email: 'bim240@gmail.com',
+  ... cost: 2500000
+  ... }) and similar
 
-5. list all collections in sports database.
+* list all collections in sports database.
+  show collections
 
-6. rename `TT` collection to `tennis`.
+* rename `TT` collection to `tennis`.
+  db.TT.renameCollection('tennis')
 
-7. create a capped collection called `khokho` which should have max 3 documents.
-  Try inserting more than 3 and output the result here ?
+* create a capped collection called `khokho` which should have max 3 documents.
+  db.createCollection('khokho', {capped : true, size:4096,max:3})
 
-8. check whether a collection is capped or not?
+  Try inserting more than 3 and see what happens?
+  db.khokho.insert({player:'bim'})
+  db.khokho.insert({player:'bim'})
+  db.khokho.insert({player:'bim'})
+  db.khokho.insert({player:'bim'})
 
-9. remove all documents from `football` collection.
+* check whether a collection is capped or not?
+  db.khokho.isCapped()
 
-10. delete cricket collection completely.
+- drop all documents from `football` collection.
+  db.football.remove({})
 
-11. rename database sports to games
+- delete cricket collection completely.
+  db.cricket.drop()
 
-12. delete sports database. 
+* delete sports database.
+
+ds.dropDatabase()
