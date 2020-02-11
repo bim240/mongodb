@@ -20,7 +20,7 @@
   ... }) and similar
 
 * list all collections in sports database.
-  show dbs
+  show collections
 
 * rename `TT` collection to `tennis`.
   db.TT.renameCollection('tennis')
